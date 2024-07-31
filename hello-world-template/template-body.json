@@ -1,0 +1,19 @@
+{
+  "category": "Cisco",
+  "createdBy": "Cisco",
+  "description": "A simple inbound voice flow where callers are greeted with a message and then disconnected. Often used during closed hours.",
+  "details": "This flow provides a simple flow that plays an announcement to the caller:\n\n1. Call is received and enters the flow.\n2. A welcome message is played to the caller.\n3. The caller is placed in a queue.\n4. Hold music is played while the caller waits.\n\nModify the flow to ensure a smooth caller experience by handling any errors or unknown conditions.\n\nHere are the activities used in the flow:\n\n**Start**\n\n- The flow begins when a call is received\n\n**Play Message**\n\n- The call is directed to the \"WelcomeMessage\" activity, which plays a welcome message to the caller.\n- This uses TTX (Text to speech) but can be a pre-recorded message, greeting the caller or providing some information.\n\n**Disconnect**\n\n- After the welcome message, the call is directed to the disconnect activity.\n- This activity disconnects the call, ending the interaction after the message has been played.\n\n### Pre-requisites\n\n- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Setup-and-Administration-Guide.\n- This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own.\n",
+  "featureFlagName": "",
+  "featureFlagValue": "",
+  "flow": "string",
+  "flowType": "FLOW",
+  "icon": "https://seeklogo.com/images/C/cisco-logo-FE0AB16DCF-seeklogo.com.png",
+  "id": {
+    "timestamp": 0
+  },
+  "instructionsURL": "string",
+  "labels": ["Beginner"],
+  "name": "string",
+  "status": "string",
+  "version": "string"
+}

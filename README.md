@@ -1,2 +1,3 @@
-# webex-contact-center-flows
-Official Repository for Sample Webex Contact Center Flows that are usable on Flow Designer
+# Webex Contact Center Flow Templates
+
+Official Repository for Sample Webex Contact Center Flow Templates that are usable on Flow Designer
