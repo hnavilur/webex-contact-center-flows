@@ -1,6 +1,6 @@
 # Description
 
-A simple inbound voice flow where callers are greeted with a message and then disconnected. Often used during closed hours.
+Use this template to create a simple inbound voice flow where callers are greeted with a message and then disconnected. Often used during closed hours.
 
 # Details
 
@@ -22,7 +22,7 @@ Here are the activities used in the flow:
 **Play Message**
 
 - The call is directed to the "WelcomeMessage" activity, which plays a welcome message to the caller.
-- This uses TTX (Text to speech) but can be a pre-recorded message, greeting the caller or providing some information.
+- This uses TTS (Text to speech) but can be a pre-recorded message, greeting the caller or providing some information.
 
 **Disconnect**
 
@@ -31,5 +31,11 @@ Here are the activities used in the flow:
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Setup-and-Administration-Guide.
-- This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own.
+- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
+- This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own audio for the prompts.
+
+## Additional Details
+
+For more information, refer to the detailed documentation on help.webex.com.
+
+[Webex Contact Center Flow Designer - Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee)
