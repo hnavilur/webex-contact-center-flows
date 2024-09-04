@@ -1,14 +1,14 @@
 # Business Hours - Template
 
 ## Name
-Comprehensive Inbound Contact Flow
+Business Hours Usage
 
 ## Labels 
 Basic, Voice, Inbound, Business Hours
 
 ## Description
 
-This flow template is designed to help contact centers manage their business hours efficiently. Callers are greeted with a message, and their calls are routed based on the business hours, holidays, and emergency conditions set for the organization. If the contact center is closed, the caller is notified of the closure.
+This flow template is designed to help contact centers manage their business hours efficiently by showcasing an example of using Business Hours in Flows. Callers are greeted with a message, and their calls are routed based on the business hours, holidays, and emergency conditions set for the organization. If the contact center is closed, the caller is notified of the closure.
 
 ## Details
 

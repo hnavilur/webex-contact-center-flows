@@ -1,4 +1,10 @@
+# Simple Inbound call Flow - Template
 
+## Name
+Simple Inbound Call to Queue
+
+## Labels 
+Basic, Voice, Inbound, Queue
 
 ## Description
 
@@ -52,7 +58,7 @@ Here are the activities used in the flow:
 
 - The flow has been designed to handle unexpected issues by terminating gracefully, with fallback routes available.
 
-## Additional Details 
+### Additional Details 
 
 For more information on Webex Contact Center Flows, refer to the detailed documentation on help.webex.com.
 

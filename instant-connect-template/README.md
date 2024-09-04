@@ -1,5 +1,11 @@
 # Webex Instant Connect Video Escalation - Template
 
+## Name
+Webex Instant Connect Video Meeting Integration
+
+## Labels 
+Advanced, Voice, Video, SMS, Inbound, Integration, Webex
+
 ## Description
 
 This template demonstrates how to set up a simple inbound voice flow that escalates the voice call to a video interaction using Webex Instant Connect's Instant Meeting API. The flow allows customers to connect to agents via Webex Contact Center, and enables video sharing through a voice-to-video escalation via an SMS link, while agents are able to launch the meetin controls via a Screenpop widget. This approach is beneficial in scenarios such as product support or healthcare consultations where real-time video enhances the problem resolution process.

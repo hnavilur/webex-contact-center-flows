@@ -1,5 +1,11 @@
 # Variable Flow Template
 
+## Name
+Dynamic Variable Support
+
+## Labels 
+Intermediate, Voice, Inbound
+
 ## Description
 
 This template provides an advanced, dynamic inbound voice flow that retrieves external settings, setting the flow variables with those settings and routes calls based on the variable configurations. This is often used for scenarios requiring flexibility in call handling based on real-time business conditions like working hours or holidays - where a single flow can be reused across different use cases using dynamic variable based routing.
@@ -66,6 +72,6 @@ The flow ensures a smooth and efficient caller experience by playing appropriate
 
 - After all necessary steps are completed, the flow ends with the appropriate disconnect or redirection.
 
-## Additional Details
+### Additional Details
 
 For more information, refer to the detailed documentation on [Webex Contact Center Flow Designer - Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).

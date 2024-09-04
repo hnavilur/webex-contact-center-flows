@@ -1,5 +1,11 @@
 # Webex Contact Center - IVR HTTP Connector for MS Dynamics
 
+## Name
+Microsoft Dynamics HTTP(S) Data Dip
+
+## Labels 
+Intermediate, Voice, Inbound, Data dip, CRM
+
 ## Description
 
 This template is designed to create an IVR flow in Webex Contact Center that connects with MS Dynamics using an HTTP connector. The flow fetches customer and case details based on the ANI (Automatic Number Identification) from the CRM and makes routing decisions accordingly. The caller is greeted with a personalized message based on the CRM data, and if no case is found, the call is transferred to an agent. The agent is provided with the customer or case details in real time via a screen pop.
@@ -90,7 +96,7 @@ In case no customer or case information is found, the call will be routed to an 
 
 - Pops up the case information or new case form for the agent when the call is answered.
 
-## Additional Details
+### Additional Details
 
 For step-by-step guidance, refer to the [Webex Contact Center Flow Designer - Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide).
 

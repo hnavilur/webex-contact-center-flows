@@ -1,5 +1,11 @@
 # Zendesk HTTP Connector for Webex Contact Center
 
+## Name
+Zendesk HTTP(S) Data Dip
+
+## Labels 
+Intermediate, Voice, Inbound, Data dip, CRM
+
 ## Description
 
 This template outlines a flow designed to interact with Zendesk via the Webex Contact Center's HTTP connector. The flow enables extracting customer data from Zendesk based on ANI (Automatic Number Identification) and fetching corresponding ticket details. Once the information is retrieved, the call is handled accordingly, with routing decisions made based on the severity of the incident or the availability of agents.
@@ -25,7 +31,7 @@ This template uses Cisco Text-to-Speech (TTS) for all prompt activities. For cus
 - Upload any custom audio files if required for prompts.
 - Ensure proper configuration of Entry Points, Queues, and Teams in the Webex Contact Center Management Portal.
 
-## Use Case
+### Use Case
 
 A customer calls into the Webex Contact Center, and the following flow occurs:
 1. An ANI lookup is performed to fetch the customer details from Zendesk.
@@ -83,7 +89,7 @@ Post-call, the system can update the Zendesk ticket with relevant call informati
 
 - The system disconnects the call if the customer opts to disconnect or after the call is completed.
 
-## Additional Details
+### Additional Details
 
 This flow leverages Webex Contact Center's HTTP connector to interact with Zendesk’s APIs. For further details, refer to:
 - [Zendesk API Documentation](https://developer.zendesk.com/documentation/developer-tools/working-with-the-zendesk-apis/exploring-zendesk-apis-with-postman/)

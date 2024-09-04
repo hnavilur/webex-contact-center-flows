@@ -1,11 +1,16 @@
 # HTTP Connector for ServiceNow - Template
 
+## Name
+ServiceNow HTTP(S) Data Dip
 
-# Description
+## Labels 
+Intermediate, Voice, Inbound, Data dip, CRM
+
+## Description
 
 This flow integrates Webex Contact Center with ServiceNow using an HTTP connector for routing decisions and extracting incident details via ServiceNow's REST APIs. It demonstrates how to securely retrieve and update incidents and other object types in ServiceNow through Webex Contact Center.
 
-# Details
+## Details
 
 The flow handles an inbound voice call in a contact center and integrates it with ServiceNow to perform an ANI lookup, fetch relevant information, and provide personalized services. Below is the process flow:
 
@@ -19,7 +24,7 @@ The flow handles an inbound voice call in a contact center and integrates it wit
 8. Once the call is connected to an agent, the incident information is displayed on the agent's desktop.
 9. Post-call, Webex Contact Center posts call information back to the relevant incident in ServiceNow.
 
-## Pre-Requisites
+### Pre-Requisites
 
 Before configuring this flow, ensure the following:
 
@@ -28,7 +33,7 @@ Before configuring this flow, ensure the following:
   - Go to: `Contact Center > Connectors > Custom Connector > OAuth2`
   - Enter the necessary credentials as outlined in the tutorial.
 
-## Use Case
+### Use Case
 
 The integration demonstrates how Webex Contact Center can enhance customer experience through personalized interactions, while leveraging ServiceNow for ANI lookups and incident management:
 
@@ -76,7 +81,7 @@ Below is a list of activities used in the flow along with a description of their
 **Post Call (Post Comments to ServiceNow):**
 - Posts the call information, including the incident number, back to ServiceNow once the call ends.
 
-## Additional Details
+### Additional Details
 
 To explore and test the REST APIs, you can import the ServiceNow API Postman collection (`ServiceNow API Collection.postman_collection.json`) into Postman. This helps in understanding which APIs are available and how they interact with Webex Contact Center.
 

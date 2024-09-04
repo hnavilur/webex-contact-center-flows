@@ -1,0 +1,19 @@
+{
+    "category": "Cisco",
+    "description": "This flow integrates Webex Contact Center with ServiceNow using an HTTP connector for routing decisions and extracting incident details via ServiceNow's REST APIs. It demonstrates how to securely retrieve and update incidents and other object types in ServiceNow through Webex Contact Center.",
+    "details": "The flow handles an inbound voice call in a contact center and integrates it with ServiceNow to perform an ANI lookup, fetch relevant information, and provide personalized services.\n\n**Flow Breakdown**\n1. A call is received by Webex Contact Center.\n2. A welcome message is played to the caller, mentioning their incident details.\n3. The system performs a lookup in ServiceNow using the ANI to fetch the caller's `sys_id`.\n4. Based on the `sys_id`, the system looks up the active incident for the caller.\n5. The incident number is played back to the caller.\n6. The call is queued for the next available agent, prioritized based on incident severity.\n7. Hold music is played while the caller waits in the queue.\n8. Once the call is connected to an agent, the incident information is displayed on the agent's desktop.\n9. Post-call, Webex Contact Center posts call information back to the relevant incident in ServiceNow.\n\n**Pre-Requisites**\n- **OAuth2 Setup**: Configure OAuth2 in ServiceNow and Webex Contact Center, following the video tutorial.\n- **Admin Setup in Webex**: Log into admin.webex.com and configure the connector.\n\n**Use Case**\nThe integration demonstrates how Webex Contact Center can enhance customer experience through personalized interactions, while leveraging ServiceNow for ANI lookups and incident management:\n1. **Inbound call**: Customer calls into Webex Contact Center.\n2. **ANI Lookup**: Webex performs an ANI lookup in ServiceNow to identify the caller.\n3. **Incident Lookup**: ServiceNow retrieves the associated Incident ID based on the caller's details.\n4. **Personalized Greeting**: Customer is greeted with a personalized message, referencing their active incident.\n5. **Routing and Prioritization**: Calls are routed based on the incident's severity.\n6. **Agent Assignment**: The call is routed to an available agent, with incident details displayed on the agent's desktop.\n7. **Post-Call Updates**: Webex Contact Center posts relevant call information, including call identifiers, to ServiceNow using event flows.\n\n**Activities Used in Flow**\n- **Start (New Phone Contact)**: Initiates the flow when an inbound call is received.\n- **Play Message (Greeting)**: Plays a welcome message using Cisco Cloud Text-to-Speech.\n- **Set Variable (Digit Strip ANI)**: Strips the international code (+1) from the ANI.\n- **HTTP Request (Lookup User)**: Looks up the user\u2019s `sys_id` in ServiceNow using their ANI.\n- **HTTP Request (Lookup Incident)**: Uses the `sys_id` to retrieve the caller's active incident from ServiceNow.\n- **Queue Contact (Queue to Agent)**: Places the caller in the queue for the next available agent.\n- **Play Music (Hold Music)**: Plays hold music while the caller waits.\n- **Post Call (Post Comments to ServiceNow)**: Posts the call information, including the incident number, back to ServiceNow once the call ends.\n\nFor more information on Webex Contact Center Flows, refer to the detailed documentation on help.webex.com.",
+    "featureFlagName": "flow-control-draft-templates",
+    "featureFlagValue": "",
+    "flowType": "FLOW",
+    "icon": "https://seeklogo.com/images/C/cisco-logo-FE0AB16DCF-seeklogo.com.png",
+    "instructionsURL": "https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee",
+    "labels": [
+        "Intermediate",
+        "Voice",
+        "Inbound",
+        "Data dip",
+        "CRM"
+    ],
+    "name": "ServiceNow HTTP(S) Data Dip",
+    "flow": ""
+}

@@ -1,5 +1,11 @@
 # Webex Contact Center - IVR HTTP Connector for Salesforce
 
+## Name
+Salesforce HTTP(S) Data Dip
+
+## Labels 
+Intermediate, Voice, Inbound, Data dip, CRM
+
 ## Description
 
 This template demonstrates how to use the HTTP connector in Webex Contact Center to interact with Salesforce, allowing for dynamic routing decisions and information extraction. This is especially useful for querying, updating, and managing cases or other objects in Salesforce using all supported HTTP verbs.

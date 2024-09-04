@@ -1,0 +1,19 @@
+{
+    "category": "Cisco",
+    "description": "This template demonstrates how to use the HTTP connector in Webex Contact Center to interact with Salesforce, allowing for dynamic routing decisions and information extraction. This is especially useful for querying, updating, and managing cases or other objects in Salesforce using all supported HTTP verbs.",
+    "details": "This flow uses Webex Contact Center's HTTP connector to retrieve customer information from Salesforce using an ANI lookup. The flow fetches the customer's account, contact, and case information from Salesforce and routes the call accordingly.\n\n> Note: The Flow uses Cisco Text-to-speech (TTS) for any prompts, and uses `defaultmusic_on_hold.wav` for hold music.\n\nFor all organization-specific configurations such as queues, entry points, connectors, and outdial ANI, these need to be manually configured before the template is published.\n\n**Use Case**\n1. A customer calls into Webex Contact Center, and their phone number is captured.\n2. The system performs an ANI lookup in Salesforce to find matching account and contact information.\n3. Based on the data retrieved, the customer is greeted with a personalized IVR message.\n4. If there is an open case associated with the customer, the agent receives this information on their desktop.\n5. After the call, Webex Contact Center posts call details and comments back to the Salesforce case.\n\n**Flow Breakdown**\n1. **ANI Lookup and Routing**: The flow begins by capturing the customer's phone number. A Salesforce API call retrieves the account and contact associated with the ANI, routing the call.\n2. **Post-Call Updates**: After the agent completes the call, Webex Contact Center posts call details and comments to the relevant Salesforce case.\n\n**Activities Used in Flow**\n- **Start (NewPhoneContact)**: Captures the incoming call details and begins the flow.\n- **Set Phone Number (SetPhoneNumber)**: Formats the captured phone number for Salesforce API lookup.\n- **Account Lookup (AccountByANI)**: Performs an HTTP GET request to Salesforce, retrieving the customer\u2019s account details based on the phone number.\n- **Contact Lookup (ContactByANI)**: Fetches the contact associated with the phone number via a Salesforce SOQL query.\n- **Case Lookup (CasebyContactId)**: Retrieves the open cases linked to the contact, fetching case details including case number and ID.\n- **Queue Contact (QueueContact)**: Routes the call to the appropriate agent based on the retrieved Salesforce information.\n- **Play Music (Music)**: Plays hold music while the customer waits to be connected to an agent.\n- **Screen Pop (ScreenPopAccount)**: Opens the customer\u2019s Salesforce account page on the agent's desktop when the call is answered.\n- **Post Comment (PostComment)**: Posts the call details to the relevant Salesforce case once the interaction is complete.\n- **End Flow (EndFlow)**: Ends the flow after completing all tasks.\n\nFor more information on configuring Salesforce with Webex Contact Center, visit the relevant resources.",
+    "featureFlagName": "flow-control-draft-templates",
+    "featureFlagValue": "",
+    "flowType": "FLOW",
+    "icon": "https://seeklogo.com/images/C/cisco-logo-FE0AB16DCF-seeklogo.com.png",
+    "instructionsURL": "https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee",
+    "labels": [
+        "Intermediate",
+        "Voice",
+        "Inbound",
+        "Data dip",
+        "CRM"
+    ],
+    "name": "Salesforce HTTP(S) Data Dip",
+    "flow": ""
+}
