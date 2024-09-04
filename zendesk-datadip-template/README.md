@@ -1,61 +1,90 @@
-# Webex Contact Center - IVR HTTP Connector for Zendesk
+# Zendesk HTTP Connector for Webex Contact Center
 
-The following section explains how to get started with the HTTP connector in Webex Contact Center that can interact with Zendesk, extract information and make routing decisions accordingly. Since all HTTP verbs are supported, you can securely extract and update the ticket / other object types inside of Zendesk with the help of this HTTP Connector.
+## Description
 
-**Attached**
+This template outlines a flow designed to interact with Zendesk via the Webex Contact Center's HTTP connector. The flow enables extracting customer data from Zendesk based on ANI (Automatic Number Identification) and fetching corresponding ticket details. Once the information is retrieved, the call is handled accordingly, with routing decisions made based on the severity of the incident or the availability of agents.
 
-- The sample flow for **Zendesk_HTTP_Connector.json** which shows how a simple lookup can be performed in an IVR flow. For detailed steps, refer the video link given below.
-- The Postman collection **Zendesk REST APIs Sample.postman_collection.json** can be directly imported into Postman to understand the Zendesk REST APIs.
+The template can be used to perform customer data lookups, manage tickets in Zendesk, and route calls efficiently within Webex Contact Center using data from Zendesk.
 
-## [How to Configure Zendesk HTTP Connector on Webex Contact Center Flow Designer](https://app.vidcast.io/share/4ee0bec7-a629-45a8-8bff-8df01b683163)
+## Details
+
+This flow illustrates how to integrate Zendesk’s APIs to enhance customer interactions within Webex Contact Center by using the HTTP connector. The system can perform several actions:
+- Lookup a Zendesk user based on ANI (the caller's number).
+- Retrieve the user’s most recent unresolved ticket.
+- Present relevant ticket details to the customer via IVR.
+- Route the call to an agent based on predefined criteria or let the customer opt to disconnect.
+
+This template uses Cisco Text-to-Speech (TTS) for all prompt activities. For custom music, it defaults to the `defaultmusic_on_hold.wav` file provided out of the box. Custom settings for entry points, queues, and audio prompts must be manually configured before publishing the flow.
+
+> **Note:** All organization-specific configurations, such as Queues, Entry Points, and Audio Prompts, need to be customized based on the system setup before deploying the flow.
+
+### Pre-requisites
+
+- Ensure API authentication is enabled in the Zendesk instance via the Admin portal. Follow the steps: **Admin** → **Apps and Integrations** → **APIs** → **Enable API authentication**.
+- The Zendesk HTTP connector must be configured using BasicAuth within the Webex Contact Center admin portal.
+- Upload any custom audio files if required for prompts.
+- Ensure proper configuration of Entry Points, Queues, and Teams in the Webex Contact Center Management Portal.
 
 ## Use Case
 
-- Customer calls into Webex Contact Center and is greeted while an ANI lookup is performed on Zendesk.
-- Based on the ANI, user details are fetched from the Zendesk CRM.
-- From Webex Contact Center, the Zendesk Ticket Number is looked up (based on the User ID) inside of the CRM and data is extracted.
-- Customer is greeted with a personalized IVR.
-- Customer is prioritized based on Incident severity.
-- The call is routed to an agent.
-- Last created ticket information is popped onto the agent's machine.
-- Post call, information about the call, including call identifiers - are posted by Webex Contact Center using Event Flows.
+A customer calls into the Webex Contact Center, and the following flow occurs:
+1. An ANI lookup is performed to fetch the customer details from Zendesk.
+2. The most recent ticket associated with the customer is retrieved.
+3. The customer is greeted via an IVR and informed of the status of their ticket.
+4. The customer can either:
+   - Connect to an agent.
+   - Disconnect if they choose not to speak to an agent.
 
-## Pre-Requisites
+Post-call, the system can update the Zendesk ticket with relevant call information.
 
-- Enable API authentication on the Zendesk instance.
-  Login to Zendesk instance -> Admin portal -> Apps and integrations -> APIs -> Zendesk API -> Toggle the button to enable API authentication using agent's email address and password. Attached is the screenshot for reference.
-- Configuring the Zendesk connector using BasicAuth.
-  Login to admin.webex.com to configure the connector
-  admin.webex.com > Contact Center > Connectors > Select Custom Connector -> Authentication Type = BasicAuth.
-  Attached is the screenshot for reference.
-- Import the attached flow Zendesk_HTTP_Connector.json inside flow designer.
-- Change the queueName, audio files etc in the IVR Flow as per your configurations.
-  Follow the tutorial video for end-to-end sample configurations.
+### Flow Breakdown
 
-**Optional**
-To explore and understand which REST APIs are supported with Zendesk, import the simplified Postman collection. These are the same APIs that will be used inside of WebexCC Flow Designer to interact with Zendesk.
+1. **Call Received**: The call enters the system and the Zendesk connector starts.
+2. **Lookup User in Zendesk**: The system performs a lookup in Zendesk using the caller's number.
+3. **Fetch Ticket Details**: The system retrieves the most recent unresolved ticket for the user.
+4. **Present Ticket Details**: The customer is informed of the ticket status via an IVR message.
+5. **Menu Options**: The customer can choose to speak to an agent or disconnect.
 
-**Zendesk REST API Docs**
+### Activities Used
 
-- https://developer.zendesk.com/documentation/developer-tools/working-with-the-zendesk-apis/exploring-zendesk-apis-with-postman/
-- https://developer.zendesk.com/documentation/ticketing/getting-started/zendesk-api-quick-start
-- https://developer.zendesk.com/api-reference/ticketing/introduction
+**Start**
 
-## Understanding the Sample Flow
+- The flow begins when a call is received.
 
-### Section 1 : IVR lookup and Routing
+**Lookup User (Zendesk)**
 
-- Within the IVR flow, a look is performed in the Zendesk CRM.
-- This script has 3 HTTP nodes inside the main flow.
-- First lookup gets the User ID of the Caller from the Zendesk CRM using the ANI.
-- Second lookup fetches the last open ticket information using the User ID.
-- Third HTTP request posts comment on the last created ticket.
+- This activity performs an HTTP request to Zendesk, searching for the user based on their ANI.
 
-![Flow Diagram 1](./images/MainFlow.png)
+**Fetch Ticket Details**
 
-### Section 2 : Screenpop on agent answer
+- Another HTTP request is made to Zendesk to retrieve the most recent ticket for the user.
 
-- This section uses Event Flows to screenpop last created ticket information in a new browser tab on the agent's machine when the agent answers the call.
-- This is just an example of what is possible on the Zendesk tickets via the Flow Designer.
+**Present Ticket Details**
 
-![Flow Diagram 2](./images/EventFlow.png)
+- A message is played to the caller via TTS, providing information about their ticket's status.
+
+**Confirmation Menu**
+
+- The system presents a menu to the customer, allowing them to either connect to an agent or disconnect.
+
+**Queue Contact**
+
+- If the customer chooses to connect to an agent, they are placed in a queue.
+
+**Play Music**
+
+- Hold music is played while the customer waits for an agent.
+
+**Post Comments (Zendesk)**
+
+- After the call, the system posts a comment on the Zendesk ticket summarizing the interaction.
+
+**Disconnect**
+
+- The system disconnects the call if the customer opts to disconnect or after the call is completed.
+
+## Additional Details
+
+This flow leverages Webex Contact Center's HTTP connector to interact with Zendesk’s APIs. For further details, refer to:
+- [Zendesk API Documentation](https://developer.zendesk.com/documentation/developer-tools/working-with-the-zendesk-apis/exploring-zendesk-apis-with-postman/)
+- [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide)

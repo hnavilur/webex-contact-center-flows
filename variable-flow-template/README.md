@@ -1,49 +1,71 @@
-The flow depicted in the image is called "Variable Flow" and it performs an HTTP lookup for external settings, setting the variables required throughout the flow. Here is a step-by-step description of what this flow does:
+# Variable Flow Template
 
-Start:
+## Description
 
-The flow begins when a call is received.
-NewPhoneCo... (Start) Node:
+This template provides an advanced, dynamic inbound voice flow that retrieves external settings, setting the flow variables with those settings and routes calls based on the variable configurations. This is often used for scenarios requiring flexibility in call handling based on real-time business conditions like working hours or holidays - where a single flow can be reused across different use cases using dynamic variable based routing.
 
-This is the entry point where the call is initially accepted into the flow.
-The event triggering this node is "NewPhoneContact."
-FetchFlowSet... (HTTP Request) Node:
+## Details
 
-The flow then proceeds to the "FetchFlowSet..." node, which makes an HTTP request to fetch all the flow settings from an external source.
-SetVariable\_... (Set Variable) Node:
+The flow dynamically fetches flow settings via an HTTP request and sets variables that guide the rest of the flow. These variables manage routing decisions, queue handling, prompts, and error management.
 
-The response from the HTTP request is used in the "SetVariable\_..." node to set various flow-related variables.
-These variables will be used throughout the flow.
-BusinessHours... (Business Hours) Node:
+The flow ensures a smooth and efficient caller experience by playing appropriate messages, handling working hours or error cases, and providing routing based on the organization's specific requirements.
 
-The flow checks the business hours schedule in the "BusinessHours..." node.
-This node uses the variables set earlier to determine the working hours, holidays, overrides, and default schedule.
-Based on the business hours schedule, the flow routes the call accordingly.
-PlayMessage... (Play Message) Node:
+> Note: The flow uses Cisco Text-to-Speech for all the audio activities requiring prompts. Custom music on hold or messages can be configured by updating the flow variables. Additionally, organization-specific configurations like Queue, Entry Points, Outdial ANI, and others need to be set up before publishing this flow.
 
-A message is played to the caller using the "PlayMessage..." node.
-The content of this message can be dynamically set based on the variables.
-QueueContact... (Queue Contact) Node:
+### Pre-requisites
 
-If required, the call is placed in a queue using the "QueueContact..." node.
-This node uses the variables to manage the queue settings and handles failures by redirecting to an error flow if necessary.
-PlayMusic_32j (Play Music) Node:
+- Configure Entry Point, Queue, and other necessary settings in Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
+- Ensure that any required static audio files or custom TTS prompts are uploaded to the system.
+- Have a valid API endpoint to fetch the flow settings.
 
-While the caller is in the queue, hold music is played using the "PlayMusic_32j" node.
-This node ensures the caller is entertained while waiting.
-GoTo_x19, GoTo_ssu, GoTo_uyn, GoTo_I1n, GoTo_8ca (Go To) Nodes:
+### Flow Breakdown
 
-The flow has several "Go To" nodes that direct the call to different destinations based on the variables and conditions set earlier.
-These nodes help in navigating through different parts of the flow or redirecting to error handling flows.
-Summary:
-The "Variable Flow" is designed to handle inbound calls with dynamic settings and routing based on external configurations. Here’s the step-by-step process:
+1. **New Phone Contact:** The flow begins when a call is received at the entry point.
+2. **HTTP Request:** The flow makes an HTTP request to fetch flow settings dynamically based on the call’s DNIS.
+3. **Business Hours Check:** Depending on the flow settings, the flow checks business hours, holidays, and overrides to route the call appropriately.
+4. **Play Message (Welcome):** Based on the fetched settings, a welcome message is played using TTS or a pre-recorded prompt.
+5. **Queue Activity:** If necessary, the call is placed in a queue based on dynamic variables.
+6. **Play Music (Queue Management & Music in Queue):** While the caller waits in the queue, hold music is played, which can be dynamically set.
+7. **Error Handling:** If any error occurs, the call is redirected to an error handling flow or a different entry point using the GoTo enabled by dynamic variables.
 
-Call is received and enters the flow.
-An HTTP request fetches external settings.
-Variables are set based on the fetched settings.
-The business hours are checked to determine the appropriate routing.
-A message is played to the caller.
-If necessary, the call is placed in a queue.
-Hold music is played while the caller waits in the queue.
-The flow uses various "Go To" nodes to navigate through different parts of the flow or handle errors.
-This setup ensures a flexible and dynamic handling of calls, adapting to external settings and providing appropriate responses and routing based on the current conditions and configurations.
+### Activities Used
+
+**Start:**
+
+- The flow starts when a call is received through the `NewPhoneContact` activity.
+
+**HTTP Request:**
+
+- The `FetchFlowSettings` activity makes an HTTP request to retrieve all necessary flow settings, such as business hours, prompts, and queue configurations.
+
+**Set Variables:**
+
+- The `SetVariable` activity stores the data retrieved from the HTTP request and assigns values to flow-related variables like `businessHours`, `queue`, `welcomePrompt`, and `holdMusic`.
+
+**Business Hours:**
+
+- The `BusinessHours` activity checks the working schedule, holidays, and overrides, directing the flow based on the current time.
+
+**Play Message:**
+
+- The `PlayMessage` activity plays a welcome message to the caller. This can be set dynamically or pre-configured.
+
+**Queue Contact:**
+
+- The `QueueContact` activity places the caller in the appropriate queue, utilizing dynamic variables for queue management and fallback handling.
+
+**Play Music:**
+
+- The `PlayMusic` activity plays hold music to callers waiting in the queue, configured based on the `holdMusic` variable.
+
+**Go To:**
+
+- Multiple `Go To` activities are used to navigate between different parts of the flow or handle specific conditions like holidays or errors.
+
+**Disconnect:**
+
+- After all necessary steps are completed, the flow ends with the appropriate disconnect or redirection.
+
+## Additional Details
+
+For more information, refer to the detailed documentation on [Webex Contact Center Flow Designer - Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).
