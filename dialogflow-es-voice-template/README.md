@@ -10,6 +10,16 @@ This flow showcases how data is passed between Webex Contact Center and DialogFl
 
 Additionally, the flow includes error handling to ensure a smooth customer experience, even when unexpected conditions arise.
 
+### Pre-requisites
+
+To use this flow, ensure the following are set up:
+
+- A Google DialogFlow ES agent with relevant intents for the conversation.
+- Entry Point, Queue, Teams, and Entry Point Mapping configured in the Webex Contact Center Management Portal.
+- Enable Webhook Fulfillment in DialogFlow ES and use the sample node.js code in the inline editor.
+- Cisco Text-to-Speech (TTS) is enabled for generating custom messages dynamically.
+- Upload static audio files if you are not using Cisco’s default audio.
+
 ### Integration Breakdown
 
 1. **Customer initiates contact**: The call is received by Webex Contact Center.
@@ -31,8 +41,8 @@ Additionally, the flow includes error handling to ensure a smooth customer exper
 **Custom Greeting**
 
 - This activity passes customer details such as name, email, and reason for calling to the DialogFlow ES bot. The greeting is dynamically generated using Cisco Text-to-Speech (TTS). Example data passed:
-  - `customerName`: Arunabh
-  - `customerEmail`: arubhatt@cisco.com
+  - `customerName`: Jane Doe
+  - `customerEmail`: customer@email.com
   - `customerReason`: Bookings
 
 **Queue to Agent**
@@ -47,7 +57,7 @@ Additionally, the flow includes error handling to ensure a smooth customer exper
 
 - This activity disconnects the call once the flow is complete, ensuring a seamless end to the interaction.
 
-### Flow JSON
+### Flow Specifics
 
 The flow JSON used in this example contains variables and activities essential for interaction handling, error processing, and communication between Webex Contact Center and DialogFlow. The key variables used include:
 
@@ -58,15 +68,6 @@ The flow JSON used in this example contains variables and activities essential f
 - `Global_Language`: Configures the default language (`en-US`).
 - `Global_VoiceName`: Determines the voice used for text-to-speech.
 
-### Pre-requisites
-
-To use this flow, ensure the following are set up:
-
-- A Google DialogFlow ES agent with relevant intents for the conversation.
-- Entry Point, Queue, Teams, and Entry Point Mapping configured in the Webex Contact Center Management Portal.
-- Enable Webhook Fulfillment in DialogFlow ES and use the sample node.js code in the inline editor.
-- Cisco Text-to-Speech (TTS) is enabled for generating custom messages dynamically.
-- Upload static audio files if you are not using Cisco’s default audio.
 
 ### Additional Resources
 

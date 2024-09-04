@@ -1,84 +1,84 @@
-The flow depicted in the images is a Salesforce connector flow designed to integrate with a contact center. Here is a step-by-step description of what each part of this flow does:
+# HTTP Connector for ServiceNow - Template
 
-Main Flow
-Start:
 
-The flow begins when a call is received.
-NewPhoneCo... (Start) Node:
+# Description
 
-The entry point where the call is initially accepted into the flow.
-The event triggering this node is "NewPhoneContact."
-SetPhoneNu... (Set Variable) Node:
+This flow integrates Webex Contact Center with ServiceNow using an HTTP connector for routing decisions and extracting incident details via ServiceNow's REST APIs. It demonstrates how to securely retrieve and update incidents and other object types in ServiceNow through Webex Contact Center.
 
-Sets the variable phoneNumber to the value of the incoming phone contact.
-This variable is used in subsequent steps to look up customer information.
-AccountByANI (HTTP Request) Node:
+# Details
 
-Makes an HTTP request to look up the customer's account information using the phone number (ANI).
-ContactByANI (HTTP Request) Node:
+The flow handles an inbound voice call in a contact center and integrates it with ServiceNow to perform an ANI lookup, fetch relevant information, and provide personalized services. Below is the process flow:
 
-Makes another HTTP request to look up the contact information by ANI.
-CasebyConta... (HTTP Request) Node:
+1. A call is received by Webex Contact Center.
+2. A welcome message is played to the caller, mentioning their incident details.
+3. The system performs a lookup in ServiceNow using the ANI to fetch the caller's `sys_id` to get the caller's Object identifier on Service Now.
+4. Based on the `sys_id`, the system looks up the active incident for the caller.
+5. The incident number is played back to the caller.
+6. The call is queued for the next available agent, prioritized based on incident severity.
+7. Hold music is played while the caller waits in the queue.
+8. Once the call is connected to an agent, the incident information is displayed on the agent's desktop.
+9. Post-call, Webex Contact Center posts call information back to the relevant incident in ServiceNow.
 
-Looks up the case information using the contact ID retrieved from the previous steps.
-QueueContact (Queue Contact) Node:
+## Pre-Requisites
 
-Places the call in a queue to wait for an agent.
-Handles any failures by redirecting to an error flow if necessary.
-Music (Play Message) Node:
+Before configuring this flow, ensure the following:
 
-Plays a message or music while the caller is in the queue, ensuring the caller is entertained while waiting.
-Event Flow
-AgentAnswer... (Event Handler) Node:
+- **OAuth2 Setup**: Configure OAuth2 in ServiceNow and Webex Contact Center, following the [video tutorial](https://app.vidcast.io/share/22e511b2-cb81-474d-a6c6-982214d0e473).
+- **Admin Setup in Webex**: Log into [admin.webex.com](https://admin.webex.com) and configure the connector:
+  - Go to: `Contact Center > Connectors > Custom Connector > OAuth2`
+  - Enter the necessary credentials as outlined in the tutorial.
 
-Handles the event when an agent answers the call.
-Triggers a screen pop action.
-ScreenPopAc... (Screen Pop) Node:
+## Use Case
 
-Opens a new tab with the Salesforce customer record, providing the agent with immediate access to relevant customer information.
-EndFlow_m8t (End Flow) Node:
+The integration demonstrates how Webex Contact Center can enhance customer experience through personalized interactions, while leveraging ServiceNow for ANI lookups and incident management:
 
-Ends the flow once the screen pop action is complete.
-PhoneConta... (Event Handler) Node:
+1. **Inbound call**: Customer calls into Webex Contact Center.
+2. **ANI Lookup**: Webex performs an ANI lookup in ServiceNow to identify the caller.
+3. **Incident Lookup**: ServiceNow retrieves the associated Incident ID based on the caller's details.
+4. **Personalized Greeting**: Customer is greeted with a personalized message, referencing their active incident.
+5. **Routing and Prioritization**: Calls are routed based on the incident's severity, ensuring critical issues are addressed first.
+6. **Agent Assignment**: The call is routed to an available agent, with incident details displayed on the agent's desktop.
+7. **Post-Call Updates**: Webex Contact Center posts relevant call information, including call identifiers, to ServiceNow using event flows.
 
-Handles the event when the phone contact ends.
-Posts a comment to the Salesforce case.
-PostComment (HTTP Request) Node:
 
-Makes an HTTP request to post a comment to the case in Salesforce, recording details of the call.
-EndFlow_oqb (End Flow) Node:
+### Activities Used in Flow
 
-Ends the flow after posting the comment.
-AgentDisconn... (Event Handler) Node:
+Below is a list of activities used in the flow along with a description of their role in the integration:
 
-Handles the event when an agent disconnects the call.
-Ends the flow to clean up resources and finalize the call handling process.
-EndFlow_n1c (End Flow) Node:
+**Start (New Phone Contact):**
+- The flow begins when an inbound call is received.
 
-Ends the flow after the agent disconnects.
-OnGlobalError (Event Handler) Node:
+**Play Message (Greeting):**
+- Plays a welcome message using Cisco Cloud Text-to-Speech, such as: 
+  "Welcome to ServiceNow demo. Your incident number is: {{incidentNum}}"
 
-Handles any global errors that occur during the flow.
-AgentOffered (Event Handler) Node:
+**Set Variable (Digit Strip ANI):**
+- Strips the international code (+1) from the ANI for exact matching.
 
-Handles the event when a call is offered to an agent.
-PreDial (Event Handler) Node:
+**Set Variable (Format ANI):**
+- Formats the ANI into ServiceNow's required format for queries: `(123) 456-7890`.
 
-Handles the event before dialing a number.
-OutboundCa... (Event Handler) Node:
+**HTTP Request (Lookup User):**
+- Looks up the user’s `sys_id` in ServiceNow using their ANI.
 
-Handles outbound campaign calls.
-Summary:
-The Salesforce connector flow integrates a contact center with Salesforce, providing a seamless experience for agents and customers. Here’s the step-by-step process:
+**HTTP Request (Lookup Incident):**
+- Uses the `sys_id` to retrieve the caller's active incident from ServiceNow.
 
-Main Flow:
+**Play Message (Incident Number):**
+- Announces the incident number to the caller using Text-to-Speech.
 
-Call is received and the phone number is captured.
-The customer's account, contact, and case information are looked up using Salesforce connectors.
-The caller is placed in a queue and entertained with music or messages while waiting.
-Event Flow:
+**Queue Contact (Queue to Agent):**
+- Places the caller in the queue for the next available agent, based on incident severity.
 
-When an agent answers the call, a new tab with the customer's Salesforce record is opened.
-After the call ends, a comment is posted to the Salesforce case.
-Handles various events such as agent disconnection, global errors, and outbound campaign calls.
-This setup ensures efficient call handling, providing agents with relevant customer information and recording call details in Salesforce for future reference.
+**Play Music (Hold Music):**
+- Plays hold music while the caller is in the queue.
+
+**Post Call (Post Comments to ServiceNow):**
+- Posts the call information, including the incident number, back to ServiceNow once the call ends.
+
+## Additional Details
+
+To explore and test the REST APIs, you can import the ServiceNow API Postman collection (`ServiceNow API Collection.postman_collection.json`) into Postman. This helps in understanding which APIs are available and how they interact with Webex Contact Center.
+
+- **ServiceNow REST API Documentation**: [REST API Docs](https://docs.servicenow.com/bundle/paris-application-development/page/integrate/inbound-rest/concept/c_RESTAPI.html)
+- **ServiceNow Table API Documentation**: [Table API Docs](https://developer.servicenow.com/dev.do#!/reference/api/sandiego/rest/c_TableAPI)

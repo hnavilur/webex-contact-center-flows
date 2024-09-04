@@ -17,6 +17,12 @@ Modify the flow to ensure a smooth caller experience by handling any errors or u
 > For all organization specific configuration activities such as Queue, Entry Points, Connectors, Outdial ANI, etc. those need to be manually configured by the user before the template is published.
 >
 
+### Pre-requisites
+
+- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
+- This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own audio for the prompts.
+  
+
 ### Flow Breakdown
 
 1. Call is received and enters the flow.
@@ -40,10 +46,6 @@ Modify the flow to ensure a smooth caller experience by handling any errors or u
 - After the welcome message, the call is directed to the disconnect activity.
 - This activity disconnects the call, ending the interaction after the message has been played.
 
-### Pre-requisites
-
-- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
-- This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own audio for the prompts.
 
 ## Additional Details
 
