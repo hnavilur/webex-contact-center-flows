@@ -1,41 +1,80 @@
-# Description
+# Google DialogFlow ES Integration with Webex Contact Center
 
-Use this template to create a simple inbound voice flow where callers are greeted with a message and then disconnected. Often used during closed hours.
+## Description
 
-# Details
+This template demonstrates the data flow between Google DialogFlow ES and Webex Contact Center, focusing on how to pass data to and from both platforms during an interaction. It provides a foundational flow where data is exchanged with DialogFlow ES for natural language processing and automated agent fulfillment.
 
-This flow provides a simple flow that plays an announcement to the caller:
+## Details
 
-1. Call is received and enters the flow.
-2. A welcome message is played to the caller.
-3. The caller is placed in a queue.
-4. Hold music is played while the caller waits.
+This flow showcases how data is passed between Webex Contact Center and DialogFlow ES for processing customer interactions. The integration with DialogFlow enables the bot to understand customer intents and take appropriate actions based on the conversation.
 
-Modify the flow to ensure a smooth caller experience by handling any errors or unknown conditions.
+Additionally, the flow includes error handling to ensure a smooth customer experience, even when unexpected conditions arise.
 
-Here are the activities used in the flow:
+### Integration Breakdown
+
+1. **Customer initiates contact**: The call is received by Webex Contact Center.
+2. **Data is passed to DialogFlow ES**: A custom greeting, which includes customer details such as name and reason for calling, is sent to the DialogFlow ES bot for processing.
+3. **Bot interaction with DialogFlow**: DialogFlow processes the input and responds based on configured intents.
+4. **Music in queue**: While the bot processes the request, the customer is placed in a queue with hold music.
+5. **Disconnect**: The interaction ends once the dialog is completed.
+
+### Activities Used in the Flow
 
 **Start**
 
-- The flow begins when a call is received
+- This activity marks the beginning of the flow. It is triggered when a new call is received.
 
-**Play Message**
+**Set Language**
 
-- The call is directed to the "WelcomeMessage" activity, which plays a welcome message to the caller.
-- This uses TTS (Text to speech) but can be a pre-recorded message, greeting the caller or providing some information.
+- The flow uses a Set Variable activity to configure the language code (`en-US`) for the entire interaction. This ensures all voice interactions align with the caller's language preference.
+
+**Custom Greeting**
+
+- This activity passes customer details such as name, email, and reason for calling to the DialogFlow ES bot. The greeting is dynamically generated using Cisco Text-to-Speech (TTS). Example data passed:
+  - `customerName`: Arunabh
+  - `customerEmail`: arubhatt@cisco.com
+  - `customerReason`: Bookings
+
+**Queue to Agent**
+
+- If the interaction requires escalation, the customer is placed in a queue, and hold music is played using the `defaultmusic_on_hold.wav` file.
+
+**Play Music**
+
+- Music is played while the caller waits in the queue. The flow uses Cisco’s default hold music but can be customized by uploading different music files.
 
 **Disconnect**
 
-- After the welcome message, the call is directed to the disconnect activity.
-- This activity disconnects the call, ending the interaction after the message has been played.
+- This activity disconnects the call once the flow is complete, ensuring a seamless end to the interaction.
+
+### Flow JSON
+
+The flow JSON used in this example contains variables and activities essential for interaction handling, error processing, and communication between Webex Contact Center and DialogFlow. The key variables used include:
+
+- `Global_FeedbackSurveyOptIn`: Tracks whether the customer opts in for a post-call survey.
+- `customerName`: Captures the customer's name for personalization.
+- `customerEmail`: Captures the customer’s email.
+- `customerReason`: Records the reason for the customer's call.
+- `Global_Language`: Configures the default language (`en-US`).
+- `Global_VoiceName`: Determines the voice used for text-to-speech.
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
-- This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own audio for the prompts.
+To use this flow, ensure the following are set up:
 
-## Additional Details
+- A Google DialogFlow ES agent with relevant intents for the conversation.
+- Entry Point, Queue, Teams, and Entry Point Mapping configured in the Webex Contact Center Management Portal.
+- Enable Webhook Fulfillment in DialogFlow ES and use the sample node.js code in the inline editor.
+- Cisco Text-to-Speech (TTS) is enabled for generating custom messages dynamically.
+- Upload static audio files if you are not using Cisco’s default audio.
 
-For more information, refer to the detailed documentation on help.webex.com.
+### Additional Resources
 
-[Webex Contact Center Flow Designer - Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee)
+- For a deeper dive into the integration, check out the [Working with Data on Google DialogFlow ES with Webex Contact Center](https://app.vidcast.io/share/491d0e41-99ab-44cf-a48b-18949c406d73) video.
+- Refer to [Webex Contact Center Developer Documentation](https://developer.webex-cx.com) and [DialogFlow ES Documentation](https://cloud.google.com/dialogflow/es/docs/reference) for further guidance.
+  
+## Developer Support
+
+For any support regarding this integration, open a ticket with the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex-cx.com/support).
+
+For further discussions, visit the [Webex Contact Center APIs Developer Community](https://community.cisco.com/t5/contact-center/bd-p/j-disc-dev-contact-center).

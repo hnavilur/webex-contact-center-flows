@@ -13,7 +13,7 @@ This flow demonstrates how to pass data from Webex Contact Center to Google Dial
 You can customize this flow further by adding organization-specific configurations like queues, entry points, and connectors, while also integrating security best practices for production-grade environments.
 
 > Note: 
-> - This Flow uses Cisco Text-to-Speech (TTS) for the audio prompts.
+> - This Flow uses Cisco Text-to-Speech (TTS) for the audio prompts (if any).
 > - For any specific configurations such as Queue, Entry Points, Connectors, etc., those will need to be manually configured in Webex Contact Center before publishing the flow.
 > - Ensure that any static audio files, if used, are uploaded to the Webex Contact Center system.
 

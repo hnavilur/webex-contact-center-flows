@@ -10,7 +10,7 @@ This flow provides a simple flow that plays an announcement to the caller.
 
 Modify the flow to ensure a smooth caller experience by handling any errors or unknown conditions.
 
-> Note: The Flow uses Cisco Text-to-speech for all the audio activities that require prompts. 
+> Note: The Flow uses Cisco Text-to-speech for all the audio activities that require prompts (if any). 
 > 
 > For music, it defaults to the `defaultmusic_on_hold.wav` file available out of box.
 > 
