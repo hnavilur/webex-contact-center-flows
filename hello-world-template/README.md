@@ -1,19 +1,30 @@
-# Description
+# Hello World - Template
+
+## Description
 
 Use this template to create a simple inbound voice flow where callers are greeted with a message and then disconnected. Often used during closed hours.
 
-# Details
+## Details
 
-This flow provides a simple flow that plays an announcement to the caller:
+This flow provides a simple flow that plays an announcement to the caller.
+
+Modify the flow to ensure a smooth caller experience by handling any errors or unknown conditions.
+
+> Note: The Flow uses Cisco Text-to-speech for all the audio activities that require prompts. 
+> 
+> For music, it defaults to the `defaultmusic_on_hold.wav` file available out of box.
+> 
+> For all organization specific configuration activities such as Queue, Entry Points, Connectors, Outdial ANI, etc. those need to be manually configured by the user before the template is published.
+>
+
+### Flow Breakdown
 
 1. Call is received and enters the flow.
 2. A welcome message is played to the caller.
 3. The caller is placed in a queue.
 4. Hold music is played while the caller waits.
 
-Modify the flow to ensure a smooth caller experience by handling any errors or unknown conditions.
-
-Here are the activities used in the flow:
+### Activities Used
 
 **Start**
 
