@@ -1,11 +1,5 @@
 # Virtual Agent with Google DialogFlow CX - Template
 
-## Name
-Dialogflow CX Virtual Agent
-
-## Labels 
-Intermediate, Voice, Inbound, Virtual Agent
-
 ## Description
 
 This flow demonstrates the full potential of integrating Google DialogFlow CX with Webex Contact Center, providing enhanced customer interaction with flexible and dynamic data handling.

@@ -1,5 +1,11 @@
 # Google DialogFlow ES Integration with Webex Contact Center
 
+## Name
+Dialogflow ES Virtual Agent
+
+## Labels 
+Intermediate, Voice, Inbound, Virtual Agent
+
 ## Description
 
 This template demonstrates the data flow between Google DialogFlow ES and Webex Contact Center, focusing on how to pass data to and from both platforms during an interaction. It provides a foundational flow where data is exchanged with DialogFlow ES for natural language processing and automated agent fulfillment.

@@ -1,5 +1,11 @@
 # Hello World - Template
 
+## Name
+Hello World
+
+## Labels 
+Basic, Voice, Inbound
+
 ## Description
 
 Use this template to create a simple inbound voice flow where callers are greeted with a message and then disconnected. Often used during closed hours.

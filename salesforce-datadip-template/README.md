@@ -1,46 +1,37 @@
 # Webex Contact Center - IVR HTTP Connector for Salesforce
 
-The following section explains how to get started with the HTTP connector in Webex Contact Center that can interact with Salesforce to make routing decisions, and extract information from Salesforce. Since all HTTP verbs are supported, you can securely extract and update Incident/ other object types inside of Salesforce.
+## Description
 
-**Attached**
+This template demonstrates how to use the HTTP connector in Webex Contact Center to interact with Salesforce, allowing for dynamic routing decisions and information extraction. This is especially useful for querying, updating, and managing cases or other objects in Salesforce using all supported HTTP verbs.
 
-- The sample flow for **Salesforce_HTTP_Connector.json** which shows you how a simple lookup can be performed. For detailed steps, refer to the video below.
-- The Postman collection **Salesforce_API_Collection.json** that can be directly imported into Postman to understand the Salesforce REST APIs.
+This specific flow looks up customer information from Salesforce using their phone number (ANI) and routes the call based on the data retrieved. It also allows Webex Contact Center to post updates to Salesforce cases post-call.
 
-## Watch the 2 Part series below
 
-### [VIDEO: Part 1 of 2: Configure Salesforce HTTP Connector](https://app.vidcast.io/share/51d8f1c7-f1ae-4963-97c2-73102a85fbf3)
+## Details
 
-### [VIDEO: Part 2 of 2: Configure Salesforce HTTP Connector](https://app.vidcast.io/share/82e9adf5-cd50-43ce-9ac4-3a34d7a23e03)
+This flow uses Webex Contact Center's HTTP connector to retrieve customer information from Salesforce using an ANI lookup. The flow fetches the customer's account, contact, and case information from Salesforce and routes the call accordingly.
 
-## Use Case
 
-- Customer calls into Webex Contact Center and is greeted while an ANI lookup is performed on Salesforce.
-- From Webex Contact Center, the Salesforce Case ID is looked up inside of the CRM and data is extracted.
-- Customer is greeted with a personalized IVR.
-- Customer is prioritized based on some parameter, e.g severity.
-- An Agent is routed the call.
-- This information is popped onto the Agent Desktop for view.
-- Post call, information about the call, case comments, including call identifiers - is posted to Salesforce by Webex Contact Center using Event Flows as a case comment.
+> Note: The Flow uses Cisco Text-to-speech (TTS) for any prompts, and uses `defaultmusic_on_hold.wav` for hold music.
 
-![IVR 1](./images/ivr1.png)
+> Important: For all organization-specific configurations such as queues, entry points, connectors, and outdial ANI, these need to be manually configured by the user before the template is published.
 
-![IVR 2](./images/ivr2.png)
+### Use Case
+
+1. A customer calls into Webex Contact Center, and their phone number is captured.
+2. The system performs an ANI lookup in Salesforce to find matching account and contact information.
+3. Based on the data retrieved, the customer is greeted with a personalized IVR message.
+4. If there is an open case associated with the customer, the agent receives this information on their desktop.
+5. After the call, Webex Contact Center posts call details and comments back to the Salesforce case.
+
+This flow ensures seamless customer service by integrating Salesforce with Webex Contact Center, ensuring that relevant information is readily available to both customers and agents.
 
 ## Pre-Requisites
 
-- Configuring the Salesforce connector using OAuth2. Follow the above Video link to enable the REST API. Look below for the OAuth2 settings.
-- Login to admin.webex.com and configure the connector details -> admin.webex.com > Contact Center > Connectors > Select the out-of-box Salesforce Connector card -> OAuth2: Enter the details as per the video.
-- Import the attached flow Salesforce_HTTP_Connector.json inside flow designer.
-- Configure the WebexCC Flow along with the required details inside the flow.
-
-**Optional**
-
-> To explore and understand what REST APIs are supported with Salesforce, import the simplified Postman collection - **Salesforce_API_Collection.json**.
-
-> These are the same APIs that will be used inside of WebexCC Flow Designer to interact with Salesforce
-
-> To manually generate the access Token to test out the connector, you can use teh CLI command:
+- Configure the Salesforce connector using OAuth2. Refer to the [official guide](https://help.webex.com/en-us/article/n26v7heb/Configure-Connected-App-for-Webex-Contact-Center-Salesforce-Connector) for detailed steps.
+- Import the attached flow `Salesforce_HTTP_Connector.json` into the Webex Contact Center Flow Designer.
+- Use the [Salesforce API collection](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm) to explore the REST APIs.
+- To manually generate the OAuth access token, use the following command:
 
 ```sh
 curl --location --request POST 'https://abcde-dev-ed.my.salesforce.com/services/oauth2/token' \
@@ -50,45 +41,62 @@ curl --location --request POST 'https://abcde-dev-ed.my.salesforce.com/services/
 --data-urlencode 'client_secret=clientSecret' \
 --data-urlencode 'username=yourLogin@salesforce.com' \
 --data-urlencode 'password=yourPassword'
+
 ```
 
-**Salesforce REST API Docs**
 
-- Salesforce REST API Introduction: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm
-- Salesforce SOQL API Reference: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/dome_query.htm
+## Flow Breakdown
 
-## OAuth2 Settings - Salesforce
+1. **ANI Lookup and Routing**: 
+   - The flow begins by capturing the customer's phone number.
+   - The phone number is formatted, and a Salesforce API call retrieves the account and contact associated with the ANI.
+   - If the customer is found, they are routed based on the associated Salesforce case.
 
-- Follow the Official Documentation and the vidcasts to configure the connector.
+2. **Post-Call Updates**:
+   - Once the agent completes the call, Webex Contact Center posts information such as call comments and call IDs to the relevant Salesforce case.
 
-- Screenshots are as shared below:
+## Activities Used in Flow
 
-**Salesforce Connector: https://help.webex.com/en-us/article/n26v7heb/Configure-Connected-App-for-Webex-Contact-Center-Salesforce-Connector**
+**Start (NewPhoneContact)**
+- Captures the incoming call details and begins the flow.
 
-**Connected App Configuration: https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm**
+**Set Phone Number (SetPhoneNumber)**
+- Formats the captured phone number for Salesforce API lookup.
 
-![Connector Settings](./images/connector01.png)
+**Account Lookup (AccountByANI)**
+- Performs an HTTP GET request to Salesforce, retrieving the customer’s account details based on the phone number.
 
-![Connector Settings](./images/connector02.png)
+**Contact Lookup (ContactByANI)**
+- Fetches the contact associated with the phone number via a Salesforce SOQL query.
 
-![Connector Settings](./images/connector03.png)
+**Case Lookup (CasebyContactId)**
+- Retrieves the open cases linked to the contact, fetching case details including case number and ID.
 
-## Understanding the Sample Flow
+**Queue Contact (QueueContact)**
+- Routes the call to the appropriate agent based on the retrieved Salesforce information and customer priority.
 
-### Section 1 : IVR lookup and Routing
+**Play Music (Music)**
+- Plays hold music while the customer waits to be connected to an agent.
 
-- This uses the Salesforce IVR Lookup within the flow.
-- The script has 2 HTTP Lookup nodes inside the main flow.
-- The first lookup fetches the System ID of the User using the ANI.
-- The second lookup fetches the current active incident of this user using the Incident Table REST API Query.
+**Screen Pop (ScreenPopAccount)**
+- Opens the customer’s Salesforce account page on the agent's desktop when the call is answered.
 
-![Flow Diagram 1](./images/flow1.png)
+**Post Comment (PostComment)**
+- Posts the call details to the relevant Salesforce case once the interaction is complete.
 
-![Flow Diagram 2](./images/flow2.png)
+**End Flow (EndFlow)**
+- Ends the flow after completing all tasks.
 
-### Section 2 : Posting Webex Contact Center call information to the incident
 
-- This section uses Event Flows to post information to the incident just when the agent answers the call, and when the agent ends the call.
-- This is just an example of what is possible on the Salesforce Incident via the Flow Designer.
+## Additional Details
 
-![Flow Diagram 2](./images/flow3.png)
+For more information on configuring Salesforce with Webex Contact Center, visit:
+
+- [Salesforce REST API Introduction](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm)
+- [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee)
+
+For a comprehensive Video Configuration Walkthrough Watch the 2 Part series below
+
+#### [Part 1 of 2: Configure Salesforce HTTP Connector](https://app.vidcast.io/share/51d8f1c7-f1ae-4963-97c2-73102a85fbf3)
+
+#### [Part 2 of 2: Configure Salesforce HTTP Connector](https://app.vidcast.io/share/82e9adf5-cd50-43ce-9ac4-3a34d7a23e03)

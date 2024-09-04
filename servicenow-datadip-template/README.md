@@ -82,3 +82,7 @@ To explore and test the REST APIs, you can import the ServiceNow API Postman col
 
 - **ServiceNow REST API Documentation**: [REST API Docs](https://docs.servicenow.com/bundle/paris-application-development/page/integrate/inbound-rest/concept/c_RESTAPI.html)
 - **ServiceNow Table API Documentation**: [Table API Docs](https://developer.servicenow.com/dev.do#!/reference/api/sandiego/rest/c_TableAPI)
+
+For more information on Webex Contact Center Flows, refer to the detailed documentation on help.webex.com.
+
+[Webex Contact Center Flow Designer - Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee)

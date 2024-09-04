@@ -1,5 +1,11 @@
 # Comprehensive Inbound Contact Flow - Template
 
+## Name
+Comprehensive Inbound Contact Flow
+
+## Labels 
+Intermediate, Voice, Inbound, PIQ, Queue
+
 ## Description
 
 This flow demonstrates a comprehensive inbound voice call scenario for Webex Contact Center. It includes handling business hours, holidays, emergency overrides, self-service options, position in queue (PIQ) announcements, and customer callback options. This is suitable for environments where basic self-service and call queuing are essential.
