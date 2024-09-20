@@ -25,7 +25,7 @@ Modify the flow to ensure a smooth caller experience by handling any errors or u
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
+- Create an Entry Point from the Control Hub settings page for Webex Contact Center. Refer to the Webex Contact Center Setup and Administration Guide.
 - This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own audio for the prompts.
 
 
@@ -33,8 +33,7 @@ Modify the flow to ensure a smooth caller experience by handling any errors or u
 
 1. Call is received and enters the flow.
 2. A welcome message is played to the caller.
-3. The caller is placed in a queue.
-4. Hold music is played while the caller waits.
+3. Flow is ended.
 
 ### Activities Used
 

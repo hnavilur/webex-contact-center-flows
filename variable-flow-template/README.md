@@ -20,7 +20,7 @@ The flow ensures a smooth and efficient caller experience by playing appropriate
 
 ### Pre-requisites
 
-- Configure Entry Point, Queue, and other necessary settings in Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
+- Configure Entry Point, Queue, and other necessary settings in Control Hub settings page for Webex Contact Center. Refer to the Webex Contact Center Setup and Administration Guide.
 - Ensure that any required static audio files or custom TTS prompts are uploaded to the system.
 - Have a valid API endpoint to fetch the flow settings.
 

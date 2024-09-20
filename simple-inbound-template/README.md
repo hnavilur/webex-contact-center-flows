@@ -22,7 +22,7 @@ This flow provides a straightforward process for handling inbound calls in a con
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the [Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).
+- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Control Hub settings page for Webex Contact Center. Refer to the [Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).
 - This flow uses Cisco Text-to-Speech (TTS) for the welcome message. If required, upload static audio files for custom greetings.
 
 This flow ensures a smooth experience by placing error-handling mechanisms and allowing fallback scenarios in case agents are not available.

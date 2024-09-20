@@ -25,7 +25,7 @@ Modify the flow to suit your organization’s needs, ensuring seamless operation
 
 ### Pre-requisites
 
-- Set up the Entry Point, Queue, Teams, and Entry Point Mapping in the Webex Contact Center Management Portal.
+- Set up the Entry Point, Queue, Teams, and Entry Point Mapping in the Control Hub settings page for Webex Contact Center.
 - Cisco TTS is used for audio prompts by default. Ensure you upload any required static audio files if using custom prompts.
 
 ### Flow Breakdown

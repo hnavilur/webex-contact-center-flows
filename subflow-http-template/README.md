@@ -18,7 +18,7 @@ Modify the subflow as needed to match your specific requirements for HTTP reques
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
+- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Control Hub settings page for Webex Contact Center. Refer to the Webex Contact Center Setup and Administration Guide.
 - Ensure that the HTTP request URL and parameters are correctly set based on your organization's needs.
 - Upload required static audio files if using your own audio for the prompts.
 

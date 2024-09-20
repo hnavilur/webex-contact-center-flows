@@ -18,11 +18,11 @@ This inbound flow provides a comprehensive handling of incoming calls, covering 
 >
 > For music, it defaults to the `defaultmusic_on_hold.wav` file provided out-of-box.
 >
-> All organization-specific configurations such as Queue, Entry Points, Connectors, Outdial ANI must be manually configured in the Webex Contact Center Management Portal before publishing.
+> All organization-specific configurations such as Queue, Entry Points, Connectors, Outdial ANI must be manually configured in the Control Hub settings page for Webex Contact Center before publishing.
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).
+- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Control Hub settings page for Webex Contact Center. Refer to the [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).
 - Set up working hours, holiday lists, and emergency overrides from Control Hub → Services → Contact Center Setup → Business Hours.
 - If Cisco Text-to-Speech (TTS) is not enabled for prompts, upload the required static audio files.
 

@@ -21,7 +21,7 @@ Additionally, the flow includes error handling to ensure a smooth customer exper
 To use this flow, ensure the following are set up:
 
 - A Google DialogFlow ES agent with relevant intents for the conversation.
-- Entry Point, Queue, Teams, and Entry Point Mapping configured in the Webex Contact Center Management Portal.
+- Entry Point, Queue, Teams, and Entry Point Mapping configured in the Control Hub settings page for Webex Contact Center.
 - Enable Webhook Fulfillment in DialogFlow ES and use the sample node.js code in the inline editor.
 - Cisco Text-to-Speech (TTS) is enabled for generating custom messages dynamically.
 - Upload static audio files if you are not using Cisco’s default audio.

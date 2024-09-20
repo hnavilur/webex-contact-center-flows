@@ -29,7 +29,7 @@ This template uses Cisco Text-to-Speech (TTS) for all prompt activities. For cus
 - Ensure API authentication is enabled in the Zendesk instance via the Admin portal. Follow the steps: **Admin** → **Apps and Integrations** → **APIs** → **Enable API authentication**.
 - The Zendesk HTTP connector must be configured using BasicAuth within the Webex Contact Center admin portal.
 - Upload any custom audio files if required for prompts.
-- Ensure proper configuration of Entry Points, Queues, and Teams in the Webex Contact Center Management Portal.
+- Ensure proper configuration of Entry Points, Queues, and Teams in the Control Hub settings page for Webex Contact Center.
 
 ### Use Case
 

@@ -72,7 +72,7 @@ You can customize this flow further by adding organization-specific configuratio
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Webex Contact Center Management Portal.
+- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Control Hub settings page for Webex Contact Center.
 - Set up the Google DialogFlow CX virtual agent and configure necessary webhook integrations.
 - Ensure that you have uploaded any static audio files required for the prompts.
 

@@ -31,7 +31,7 @@ Here are the activities used in the flow:
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams and Entry Point Mapping from the Webex Contact Center Management Portal. Refer to the Webex Contact Center Setup and Administration Guide.
+- Create Entry Point, Queue, Teams and Entry Point Mapping from the Control Hub settings page for Webex Contact Center. Refer to the Webex Contact Center Setup and Administration Guide.
 - This flow uses Cisco TTS(Text-to-speech). Upload required static audio files if using your own audio for the prompts.
 
 ## Additional Details

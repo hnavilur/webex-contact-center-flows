@@ -18,7 +18,7 @@ The subflow can be customized by altering variables such as the type of music pl
 
 ### Pre-requisites
 
-- Configure Entry Points, Queue, Teams, and Entry Point Mapping in the Webex Contact Center Management Portal.
+- Configure Entry Points, Queue, Teams, and Entry Point Mapping in the Control Hub settings page for Webex Contact Center.
 - Ensure proper queue treatment logic and error-handling configurations.
 - Set up any required static audio files if using custom audio for music or prompts.
 

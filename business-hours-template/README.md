@@ -24,7 +24,7 @@ This sample flow is tailored for business hours management in Webex Contact Cent
 
 1. **Business Hours Setup**: Create working hours, holiday lists, and overrides in the Webex Control Hub under Contact Center Setup.
 2. **Audio Files**: Upload the required audio files for prompts such as the "BusinessHoursOpen.wav" or use Cisco’s TTS feature.
-3. **Queue, Teams, and Entry Point Mapping**: Configure these elements in the Webex Contact Center Management Portal.
+3. **Queue, Teams, and Entry Point Mapping**: Configure these elements in the Control Hub settings page for Webex Contact Center.
 
 ### Flow Breakdown
 
