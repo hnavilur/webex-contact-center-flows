@@ -1,7 +1,7 @@
-# Autonomous AI Agent Voice Flow (Package tracking)
+# Autonomous AI Agent (Package Tracking)
 
 ## Name
-Autonomous AI Agent Voice Flow (Package tracking)
+Autonomous AI Agent (Package Tracking)
 
 ## Labels 
 Advanced, Voice, Inbound, Virtual Assistant
