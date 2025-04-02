@@ -1,7 +1,7 @@
-# Autonomous AI Agent (Package Tracking)
+# AI Agent Autonomous (Package Tracking)
 
 ## Name
-Autonomous AI Agent (Package Tracking)
+Autonomous AI Agent Voice Flow (Package tracking)
 
 ## Labels 
 Advanced, Voice, Inbound, Virtual Assistant
@@ -18,7 +18,7 @@ The flow is designed to handle customer interactions about package tracking via 
 
 To use this flow, ensure the following are set up:
 
-- An autonomous AI Agent configured with the appropriate action (along with fulfilment) and knowledge documents.
+- An autonomous AI Agent configured with the appropriate action (along with fulfilment) and knowledge documents. A sample fulfilment flow is available in Webex Connect flow templates.
 - Entry Point, Queue, Teams, and Entry Point Mapping configured in the Control Hub settings page for Webex Contact Center.
 - Cisco Text-to-Speech (TTS) is enabled for generating custom messages dynamically.
 - Upload static audio files if you are not using Cisco’s default audio.

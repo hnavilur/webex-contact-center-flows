@@ -1,18 +1,18 @@
-# Scripted AI Agent Voice Flow (Doctor's Appointment Booking)
+# AI Agent Scripted (Doctor's Appointment Booking)
 
 ## Name
-Scripted AI Agent Flow (Doctor's Appointment Booking)
+AI Agent Scripted (Doctor's Appointment Booking)
 
 ## Labels 
-Advanced, Voice, Inbound, Virtual Assistant
+Advanced, Voice, AI Agent Studio, Virtual Assistant
 
 ## Description
 
-This template demonstrates the data flow between Webex Contact Center and Webex AI Agent Studio, focusing on how to pass data to and from both platforms during an interaction while using a scripted agent. The flow contains several integrations with external systems based on the AI Agent's state and passes the fulfilment data back to the agent in order to respond to customers.
+This template demonstrates the data flow between Webex Contact Center and Webex AI Agent Studio for an interaction that leverages a scripted agent. The flow contains several integrations with external systems. These are invoked based on custom events sent by AI Agent and the fulfilment data is passed back to the agent.
 
 ## Details
 
-This flow showcases how data is passed between Webex Contact Center and Webex AI Agent Studio for processing customer interactions. This flow facilitates automated scheduling and management of doctor's appointments through a scripted AI agent. It integrates with external systems to check availability, create appointments, look up existing appointments, and cancel appointments. The flow ensures seamless communication between the caller and the AI agent, with escalation options to human agents when necessary.
+This flow showcases how data is passed between Webex Contact Center and Webex AI Agent Studio using custom events. This flow facilitates automated scheduling and management of doctor's appointments through a scripted AI agent. It integrates with external systems to check availability, create appointments, look up existing appointments, and cancel appointments. The flow ensures seamless communication between the caller and the AI agent, with escalation options to human agents when necessary.
 ### Pre-requisites
 
 To use this flow, ensure the following are set up:
