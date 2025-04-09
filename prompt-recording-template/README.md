@@ -1,29 +1,23 @@
-# Comprehensive Inbound Contact Flow - Template
+# Prompt Management Template
 
 ## Name
-Comprehensive Inbound Contact Flow
+Prompt Management Flow Template
 
-## Labels 
-Intermediate, Voice, Inbound, PIQ, Queue
+## Labels
+Template, Voice, Prompt Management, TUI, HTTP Activity, Form Data, GraphQL
 
 ## Description
 
-This flow demonstrates a comprehensive inbound voice call scenario for Webex Contact Center. It includes handling business hours, holidays, emergency overrides, self-service options, position in queue (PIQ) announcements, and customer callback options. This is suitable for environments where basic self-service and call queuing are essential.
+This flow template provides a streamlined method for administrators to record and manage audio prompts within Webex Contact Center via a Telephony User Interface (TUI). It leverages enhanced HTTP Activity capabilities, including support for `Content-Type: Form Data` to interact with Webex Contact Center's Audio File (Prompt) APIs. This template replicates functionalities familiar from on-premises systems, improving customer experience and operational efficiency.
 
 ## Details
 
-This inbound flow provides a comprehensive handling of incoming calls, covering business hours checks, position in queue announcements, and callback options. Modify the flow to fit specific organization needs and to handle unknown conditions gracefully.
-
-> Note: This flow uses Cisco Text-to-Speech (TTS) for audio activities requiring prompts (if any).
->
-> For music, it defaults to the `defaultmusic_on_hold.wav` file provided out-of-box.
->
-> All organization-specific configurations such as Queue, Entry Points, Connectors, Outdial ANI must be manually configured in the Control Hub settings page for Webex Contact Center before publishing.
+This flow template empowers administrators to easily record, replace, and manage system/flow prompts directly through a phone interface. It addresses the limitations of manual prompt management and enhances the usability of the Flow Designer, especially in emergency scenarios where desktop access is limited. Add additional checks to authorize admins, providing additional action menus, by modifying the template.
 
 ### Pre-requisites
 
-- Create Entry Point, Queue, Teams, and Entry Point Mapping from the Control Hub settings page for Webex Contact Center. Refer to the [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).
-- Set up working hours, holiday lists, and emergency overrides from Control Hub → Services → Contact Center Setup → Business Hours.
+- Create and Entry Point, and configure the Entry Point Mapping from the Control Hub settings page for Webex Contact Center. Refer to the [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee).
+- Configure a Connector to Webex Contact Center APIs.
 - If Cisco Text-to-Speech (TTS) is not enabled for prompts, upload the required static audio files.
 
 ### Flow Breakdown
@@ -31,68 +25,83 @@ This inbound flow provides a comprehensive handling of incoming calls, covering 
 1. **Call is Received:**
    - Call enters the flow at the **NewPhoneContact** activity.
 
-2. **Check Business Hours:**
-   - The flow checks the current time against the defined business hours using the **BusinessHours** activity.
-     - **Working Hours:** The call is routed to the **Work_Non_WorkHours_Match** activity, and further handled based on conditions such as open hours or after-hours.
-     - **Holidays:** The **Holiday_Closed** message plays, informing the caller that the office is closed due to a holiday, followed by disconnection.
-     - **Emergency Override:** The **Override_Emergency** activity plays an emergency override message, followed by disconnection.
-     - **After Hours:** The **AfterHours_Prompt** activity plays a closed-hours message, and the call is disconnected.
+2. **(OPTIONAL) Admin Authentication via OTP:**
+   - The flow developer can implement an optional authentication barrier for the administrator, using a secure method like OTP delivered via SMS to the ANI, or a randomly generated number/PIN. This can be added before the main menu.
 
-3. **Self-Service Options:**
-   - During open hours, the **WelcomeMenu** (IVR Menu) activity plays a menu offering basic self-service options to callers:
-     - **Press 1 for Customer Support:** The call is queued for the support team.
-     - **Press 2 for Sales:** The call is queued for the sales team.
+1. **Main Menu:**
+   - The **MainMenu** activity (IVR Menu) presents the administrator with the following options:
+     - **Press 1 to create a new prompt.**
+     - **Press 2 to update an existing prompt.**
+     - **Press 3 to delete an existing prompt.**
+     - **Press 4 to exit the flow**
 
-4. **Queue Placement:**
-   - The caller is placed in a queue using the **Queue** activity.
-   - The **GetPositioninQueue** activity retrieves the caller’s position in the queue, and this information is announced to the caller using the **PlayPIQ** activity.
+2. **Create Prompt (Option 1):**
+   - The **PlayMessage_kcx** activity prompts the administrator to record a new audio prompt.
+   - The **Record_e0j** activity records the audio input from the administrator.
+   - The recorded audio is then sent to the Webex Contact Center API using the **CreatePrompt** HTTP request activity with `Content-Type: Form Data`.
+   - The **Parse_gke** activity parses the response to extract the `id` and `blobId` of the newly created prompt. This is needed in case one needs to update the same prompt.
+   - The **PlayMessage_q16** activity confirms that the message has been created.
+   - The system plays back the recorded prompt for confirmation using **PlayRecordedMessage**.
 
-5. **Callback and Voicemail Options:**
-   - If the caller chooses to leave a voicemail or request a callback, the **FinalMenu** activity is triggered:
-     - **Press 1 for Callback:** The **Callback_guf** activity is used to schedule a callback.
-     - **Press 2 for Voicemail:** The call is transferred to voicemail using the **VoiceMail** activity.
+3. **Update Prompt (Option 2):**
+   - The **RecordPromptAfterTone** activity prompts the administrator to record an updated prompt.
+   - The **Record_e38** activity records the new audio.
+   - The flow then renames the file to be deleted using **RenameFileToDelete**. This ensures references to this audio file are removed wherever audio files are referred by name.
+   - The updated audio is sent to the Webex Contact Center API using the **HTTPRequest_13n** HTTP request activity with `Content-Type: Form Data`.
+   - The system confirms the update and plays back the new prompt using **PlayMessage_q16_jpg_03l** and **PlayMessage_0l6**.
 
-6. **Hold Music:**
-   - While waiting in the queue, the caller hears hold music using the **MusicOnHold** activity.
+4.  **Delete Prompt (Option 3):**
+    - The **DeleteConfirm** activity confirms the deletion.
+    - The flow renames the file to be deleted using **RenameFileToDelete**.
+    - The **HTTPRequest_raf** activity sends a DELETE request to the Webex Contact Center API to delete the prompt.
+    - The system confirms the deletion using **DeleteConfirm**.
 
-7. **Loop Handling:**
-   - The flow ensures that if a caller loops too many times (via the **CallLoopCycle** and **LoopCycle** activities), they are directed to the final menu options (callback or voicemail).
+5. **Exit (Option 4):**
+   - The **Goodbye** activity plays a thank you message.
+   - The call is disconnected using the **DisconnectContact_cz4** activity.
 
-8. **Call Disconnection:**
-   - After all steps are completed or if the caller chooses to exit, the call is disconnected using the **DisconnectContact** activities.
+### Variables
+
+- **blobId:** (STRING) - The Blob ID of the audio file.
+- **audioFileName:** (STRING) - The name of the audio file (default: "EmergencyDemo.wav").
+- **id:** (STRING) - The ID of the audio file.
+- **status:** (STRING) - The status of the API request.
+- **newFileName:** (STRING) - The name of the updated audio file (default: "updatedFile.wav").
+- **response:** (STRING) - The HTTP response from the API requests. This is optional, for debugging.
 
 ### Activities Used
 
 **Start**
 - **NewPhoneContact:** Starts the flow when the call is received.
 
-**Business Hours Check**
-- **BusinessHours:** Checks if the call is during business hours, holidays, or emergency override situations.
-
 **IVR Menu**
-- **WelcomeMenu:** Plays a menu with options for self-service (Press 1 for Support, Press 2 for Sales).
+- **MainMenu:** Plays a menu with options for prompt management.
 
-**Queue Handling**
-- **Queue:** Places the caller in a queue for the appropriate team (e.g., support or sales).
-- **GetPositioninQueue:** Retrieves and announces the caller's position in the queue.
-- **PlayPIQ:** Announces the caller’s position in the queue.
+**Create Prompt**
+- **PlayMessage:** Prompts the administrator to record a new prompt.
+- **Record:** Records the audio input.
+- **HTTP Request:** HTTP request to create the audio prompt using `Content-Type: FORM-DATA`.
+- **Parse:** Parses the HTTP response to extract the `id` and `blobId`.
+- **PlayMessage:** Confirms the message creation.
+- **PlayMessage:** Plays back the recorded prompt.
 
-**Callback and Voicemail Options**
-- **FinalMenu:** Offers callback or voicemail options if the call loops multiple times.
-- **Callback_guf:** Schedules a callback for the caller.
-- **VoiceMail:** Transfers the caller to voicemail.
+**Update Prompt**
+- **Menu:** Prompts the administrator to record an updated prompt.
+- **Record_e38:** Records the audio input.
+- **HTTP Request:** HTTP request to update the audio prompt using `Content-Type: FORM-DATA`.
+- **PlayMessage:** Confirms the message update.
+- **PlayMessage:** Plays back the updated prompt.
 
-**Hold Music**
-- **MusicOnHold:** Plays hold music while the caller waits in the queue.
+**Delete Prompt**
+- **Menu:** Confirms the deletion of the audio prompt.
+- **HTTP Request:** Renames the file to be deleted. Needs Id of the prompt to be defined.
+- **HTTP Request:** HTTP request to delete the audio prompt using `Content-Type: Application/JSON` and DELETE request.
 
-**Loop Handling**
-- **CallLoopCycle and LoopCycle:** Ensures that calls looping too many times are directed to the final menu.
-
-**Disconnection**
-- **DisconnectContact:** Disconnects the call after messages or when the caller chooses to end the interaction.
+**Other**
+- **Wait:** Wait activity.
+- **SetVariable:** Sets variables.
+- **DisconnectContact:** Disconnects the call.
 
 ### Additional Details
 
-For more information, refer to the detailed documentation on the Webex Contact Center help portal.
-
-[Webex Contact Center Flow Designer - Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide#Cisco_Generic_Topic.dita_e338e055-64b0-4973-bd52-8a5581dcb0ee)
+For more information on using the Record Activity, HTTP requests and Recording controls within Webex Contact Center, refer to the [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide).
