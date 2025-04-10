@@ -4,7 +4,7 @@
 Prompt Management Flow Template
 
 ## Labels
-Template, Voice, Prompt Management, TUI, HTTP Activity, Form Data, GraphQL
+Voice, Audio File, Prompt Management, TUI, HTTP Activity, Form Data
 
 ## Description
 
