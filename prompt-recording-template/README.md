@@ -1,7 +1,7 @@
-# Prompt Management Template
+# Audio Prompt Recording and Management
 
 ## Name
-Prompt Management Flow Template
+Audio Prompt Recording and Management
 
 ## Labels
 Voice, Audio File, Prompt Management, TUI, HTTP Activity, Form Data

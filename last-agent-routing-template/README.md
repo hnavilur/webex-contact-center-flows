@@ -10,14 +10,11 @@ Voice, HTTP Activity, GraphQL, Search API, Last Agent Routing
 
 This flow template demonstrates how to implement Last Agent Routing within Webex Contact Center by leveraging the enhanced HTTP Activity with support for `Content-Type: GraphQL`. It uses the WebexCC APIs HTTP connector to interact with the Search API, enabling routing calls to the last agent who handled the call. This template enhances customer experience by connecting them with a familiar agent.
 
-### Feature Overview
-This feature enhances the HTTP Activity within Webex Contact Center by adding support for `Content-Type: GraphQL`. 
-
-Ability to use the WebexCC APIs HTTP connector to use the Search API via the new GraphQL content type: including variable substitution.
-
 ## Details
 
 This flow template checks if a customer has called within the last 24 hours and, if so, routes the call to the same agent. It utilizes the Search API via GraphQL to find the last agent who handled the call based on the caller's ANI (Automatic Number Identification).
+
+It uses the feature that enhances the HTTP Activity within Webex Contact Center by adding support for `Content-Type: GraphQL` - Ability to use the WebexCC APIs HTTP connector to use the Search API via the new GraphQL content type: including variable substitution.
 
 ### Pre-requisites
 
