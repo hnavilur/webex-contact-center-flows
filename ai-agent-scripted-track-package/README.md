@@ -12,7 +12,7 @@ This flow is designed to handle voice interactions related to package tracking u
 
 ## Details
 
-This flow leverages a scripted Webex AI Agent to interact with customers regarding package tracking. The VAV2 (Virtual Agent V2) activity exits through its 'Handled' edge when the scripted agent raises a custom event to track the package. The flow uses a package tracking API to achieve this. This API is available to developers for testing and demos. The output data is parsed in the flow and passed back to the Agent via a State Event. More information on [configuring fulfilment for scripted agents for voice]().  
+This flow leverages a scripted Webex AI Agent to interact with customers regarding package tracking. The VAV2 (Virtual Agent V2) activity exits through its 'Handled' edge when the scripted agent raises a custom event to track the package. The flow uses a package tracking API to achieve this. This API is available to developers for testing and demos. The output data is parsed in the flow and passed back to the Agent via a State Event.  
 
 ### Pre-requisites
 
@@ -108,8 +108,6 @@ For deeper insights into using Webex Contact Center with scripted AI agents, ref
 - [Webex Contact Center Developer Documentation](https://developer.webex-cx.com)
 - [Webex Contact Center Flow Designer Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide)
 - [Manage-custom-reports-for-AI-agents](https://help.webex.com/en-us/article/ncs9r37/Webex-AI-Agent-Studio-Administration-guide#Manage-custom-reports-for-AI-agents)
-- [Configuring fulfilment for scripted agents for voice (in flow designer)]()
-- [API collection to track and create packages with examples]()
 
 ## Developer Support
 
