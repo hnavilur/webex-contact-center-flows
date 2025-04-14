@@ -2,7 +2,7 @@
 
 ## Name
 
-Outbound_Preview_Campaign_Template
+Outbound Preview Campaign
 
 ## Labels 
 Outbound, Voice, Campaign
@@ -33,8 +33,7 @@ Modify the flow to ensure efficient campaign management by handling any errors o
 
 - Global variables should be configured for each variable imported into the contact list which is desired to be utilized in the flow or potentially eventually passed to the agent desktop. The global variable name(s) should match the variable name in the import list. 
 
-**You must configure this customer data on the desktop layout in the flow within the incoming popover section. Note that the incoming popover does not support sensitive data. Download Desktop Layout.
-For more information about how to configure campaigns using LCM, see Cisco Webex Contact Center Campaign Manager User Guide.
+> **Note: You must configure this customer data on the desktop layout in the flow within the incoming popover section. Note that the incoming popover does not support sensitive data. [Download Desktop Layout](https://github.com/WebexCC/webexcc.github.io/blob/master/assets/Acqueon_Desktop_Layout.json).** For more information about how to configure campaigns using LCM, see Cisco Webex Contact Center Campaign Manager User Guide.
 
 Configure Voice Outbound Campaign Modes in Webex Contact Center
 For detailed steps, see Webex Contact Center setup and administration guide.
@@ -50,11 +49,6 @@ For detailed steps, see Webex Contact Center setup and administration guide.
 **Start**
 
 - The flow begins with the initiation of a new phone contact within the campaign.
-
-**Play Message**
-
-- None
-
 
 **Disconnect**
 
