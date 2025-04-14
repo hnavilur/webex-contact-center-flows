@@ -1,7 +1,7 @@
-# IVR Predictive Progressive Campaign - Template
+# IVR Predictive Progressive Campaign
 
 ## Name
-IVR_Predictive_Progressive_Campaign_Template
+IVR Predictive Progressive Campaign
 
 ## Labels 
 IVR, Predictive, Progressive, Outbound
@@ -30,7 +30,7 @@ Customize the flow to enhance contact handling and reinforce error management st
 1. Establish Outdial Entry Points, Outdial queues, teams, entry point mappings, and other organization-specific settings like connectors and outdial ANI.
 2. Configure a flow for each campaign, referenced by the outdial entry point. The flow is straightforward but dictates which variables are visible on the agent desktop and their sequence. This is managed via global variables. Adjust variables as needed.
 3. Set up global variables for each variable imported into the contact list intended for use in the flow or potentially passed to the agent desktop. Ensure global variable names match those in the import list.
-4. Configure customer data on the desktop layout within the flow's incoming popover section. Note: sensitive data is not supported in the incoming popover. [Download Desktop Layout](https://github.com/WebexCC/webexcc.github.io/blob/master/assets/Acqueon_Desktop_Layout.json\)
+4. Configure customer data on the desktop layout within the flow's incoming popover section. Note: sensitive data is not supported in the incoming popover. **[Download Desktop Layout](https://github.com/WebexCC/webexcc.github.io/blob/master/assets/Acqueon_Desktop_Layout.json)**
 
 - For guidance on configuring campaigns with LCM, consult the Cisco Webex Contact Center Campaign Manager User Guide.
 
