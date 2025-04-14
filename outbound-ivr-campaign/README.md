@@ -61,7 +61,10 @@ Customize the flow to enhance contact handling and reinforce error management st
 
 - This activity disconnects the call, ending the interaction after the message has been played.
 
+**Event Flows**
 
+- Event flows are used for Outbound Campaign Result to make decisions and continue the flow.
+- 
 ## Additional Details
 
 For more information, refer to the detailed documentation on help.webex.com.
