@@ -1,4 +1,4 @@
-# Predictive Progressive Campaign - Template
+# Predictive Progressive Campaign Template
 
 ## Name
 Predictive Progressive Campaign
@@ -63,7 +63,9 @@ Modify the flow to ensure effective contact management and robust error handling
 
 - Ends the interaction by disconnecting the call after handling the contact.
 
+**Event Flows**
 
+- Event flows are used for Outbound Campaign Result to make decisions and continue the flow.
 
 ## Additional Details
 

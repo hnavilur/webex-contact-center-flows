@@ -1,4 +1,4 @@
-# Outbound Preview Campaign - Template
+# Outbound Preview Campaign Template
 
 ## Name
 
