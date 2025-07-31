@@ -1,11 +1,11 @@
-# Outbound Preview Campaign - Template
+# Outbound Preview Campaign Template
 
 ## Name
 
 Outbound Preview Campaign
 
 ## Labels 
-Outbound, Voice, Campaign
+Outbound, Voice, Campaign, Preview
 
 ## Description
 
