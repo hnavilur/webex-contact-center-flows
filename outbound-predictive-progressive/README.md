@@ -8,7 +8,7 @@ Predictive, Progressive,Outbound
 
 ## Description
 
-Use this template to create a sophisticated outbound campaign flow where contacts are initiated using predictive or progressive dialing. This is often used for reaching out to customers proactively.
+Use this template to create a sophisticated outbound campaign flow that uses the Campaign Manager integration where contacts are initiated using predictive or progressive dialing. This is often used for reaching out to customers proactively or when executing outbound campaigns (marketing/sales/proactive outreach).
 
 ## Details
 

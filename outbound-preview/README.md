@@ -5,7 +5,7 @@
 Outbound Preview Campaign
 
 ## Labels 
-Outbound, Voice, Campaign
+Outbound, Voice, Campaign, Preview
 
 ## Description
 
