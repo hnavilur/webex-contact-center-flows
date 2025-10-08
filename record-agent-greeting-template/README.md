@@ -19,7 +19,6 @@ This flow template enables administrators to allow agents to record their person
 ### Pre-requisites
 
 1.  Organisation should have active flex3 license.
-2.  Agent's desktop profile should have Personal greeting enabled.
 3.  Enable Personal greeting flag of the agent's desktop profile.
 
 
