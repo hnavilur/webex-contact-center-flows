@@ -105,12 +105,12 @@ The flow includes error management strategies to handle unexpected issues gracef
 
 For deeper insights into using Webex Contact Center with scripted AI agents, refer to related documentation:
 
-- [Webex Contact Center Developer Documentation](https://developer.webex-cx.com)
+- [Webex Contact Center Developer Documentation](https://developer.webex.com/docs/webex-contact-center)
 - [Webex Contact Center Flow Designer Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide)
 - [Manage-custom-reports-for-AI-agents](https://help.webex.com/en-us/article/ncs9r37/Webex-AI-Agent-Studio-Administration-guide#Manage-custom-reports-for-AI-agents)
 
 ## Developer Support
 
-For support related to this flow, contact the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex-cx.com/support).
+For support related to this flow, contact the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex.com/explore/support).
 
 For further discussions, visit the [Webex Contact Center APIs Developer Community](https://community.cisco.com/t5/contact-center/bd-p/j-disc-dev-contact-center).

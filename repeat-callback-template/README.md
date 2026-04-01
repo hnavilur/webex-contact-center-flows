@@ -98,4 +98,4 @@ It uses the feature that enhances the HTTP Activity within Webex Contact Center 
 For more information on using HTTP requests with GraphQL and other activities within Webex Contact Center, refer to the [Webex Contact Center Setup and Administration Guide](https://help.webex.com/en-us/article/n5595zd/Webex-Contact-Center-Setup-and-Administration-Guide).
 
 Also refer to the Webex Contact Center APIs documentation for details on the Search API and GraphQL queries.
-[Search API Documentation - Developer Portal](https://developer.webex-cx.com/documentation/search/v1/search-tasks)
+[Search API Documentation - Developer Portal](https://developer.webex.com/docs/api/v1/search)

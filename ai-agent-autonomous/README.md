@@ -69,6 +69,6 @@ For deeper insights into using Webex Contact Center with autonomous AI agents, r
 
 ## Developer Support
 
-For support related to this flow, contact the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex-cx.com/support).
+For support related to this flow, contact the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex.com/explore/support).
 
 For further discussions, visit the [Webex Contact Center APIs Developer Community](https://community.cisco.com/t5/contact-center/bd-p/j-disc-dev-contact-center).
