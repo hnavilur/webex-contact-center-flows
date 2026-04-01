@@ -97,6 +97,6 @@ For deeper insights into setting up your AI Agents on Webex AI Agent Studio and 
 
 ## Developer Support
 
-For any support regarding this integration, open a ticket with the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex-cx.com/support).
+For any support regarding this integration, open a ticket with the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex.com/explore/support).
 
 For further discussions, visit the [Webex Contact Center APIs Developer Community](https://community.cisco.com/t5/contact-center/bd-p/j-disc-dev-contact-center).

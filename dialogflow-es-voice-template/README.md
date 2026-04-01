@@ -78,10 +78,10 @@ The flow JSON used in this example contains variables and activities essential f
 ### Additional Resources
 
 - For a deeper dive into the integration, check out the [Working with Data on Google DialogFlow ES with Webex Contact Center](https://app.vidcast.io/share/491d0e41-99ab-44cf-a48b-18949c406d73) video.
-- Refer to [Webex Contact Center Developer Documentation](https://developer.webex-cx.com) and [DialogFlow ES Documentation](https://cloud.google.com/dialogflow/es/docs/reference) for further guidance.
+- Refer to [Webex Contact Center Developer Documentation](https://developer.webex.com/docs/webex-contact-center) and [DialogFlow ES Documentation](https://cloud.google.com/dialogflow/es/docs/reference) for further guidance.
   
 ## Developer Support
 
-For any support regarding this integration, open a ticket with the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex-cx.com/support).
+For any support regarding this integration, open a ticket with the Webex Contact Center Developer Support team via the [Webex Developer Portal](https://developer.webex.com/explore/support).
 
 For further discussions, visit the [Webex Contact Center APIs Developer Community](https://community.cisco.com/t5/contact-center/bd-p/j-disc-dev-contact-center).

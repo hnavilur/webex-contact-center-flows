@@ -83,4 +83,4 @@ For further details on integrating Webex Contact Center with Google DialogFlow C
 - [Google DialogFlow CX Developer Documentation](https://cloud.google.com/dialogflow/cx/docs)
 - [Webex Contact Center Virtual Agent Voice Guide](https://help.webex.com/en-us/article/n6gaghu/Virtual-Agent-Voice-in-Webex-Contact-Center)
 
-For support, visit the [Webex Contact Center Developer Support](https://developer.webex-cx.com/support) or join the [Webex Contact Center APIs Developer Community](https://community.cisco.com/t5/contact-center/bd-p/j-disc-dev-contact-center).
+For support, visit the [Webex Contact Center Developer Support](https://developer.webex.com/explore/support) or join the [Webex Contact Center APIs Developer Community](https://community.cisco.com/t5/contact-center/bd-p/j-disc-dev-contact-center).
